@@ -12,8 +12,8 @@ newdata.sort_values('Points', ascending=False, inplace=True)
 
 trimmed = newdata[['Name', 'Team', 'Points', 'PointAverage', 'FangraphsId']]
 
-pos.rename(columns={'FangraphsID': 'FangraphsId', 'ESPN_POS': 'POS'}, inplace=True)
+pos.rename(columns={'FangraphsID': 'FangraphsId', 'ESPN_POS': 'POS', 'MLBAMID': 'MLBId'}, inplace=True)
 
-combined = pd.merge(trimmed, pos[['POS', 'FangraphsId']], on='FangraphsId')
+combined = pd.merge(trimmed, pos[['POS', 'FangraphsId', 'MLBId']], on='FangraphsId')
 
 combined.to_csv('hitter_points.csv')
